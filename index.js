@@ -87,7 +87,7 @@ const reactivePrefetchMixin = dao => ({
     if(!this.$options.reactivePreFetch) return;
     if (!this.$options.computed) this.$options.computed = {}
     this.$options.computed[prefix+"_reactivePreFetch"] = function() {
-      return this.$options.reactivePreFetch.call(this, this.$route)
+      return this.$options.reactivePreFetch.call(this, this.$route, this.$router)
     }
     const optionData = this.$options.data
     this.$options.data = function vueReactiveDaoInjectedDataFn () {
