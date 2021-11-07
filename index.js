@@ -213,6 +213,7 @@ async function live(api, path, onUnmountedCb) {
     }
   }
 
+  if(Array.isArray(path)) path = { what: path }
   const paths = [ path ]
   if(typeof window == 'undefined') {
     const preFetchPaths = await api.get({ paths })
