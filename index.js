@@ -203,7 +203,7 @@ export { ReactiveDaoVue, reactiveMixin, reactivePrefetchMixin, reactiveComponent
 const liveSymbol = Symbol('live')
 
 async function live(api, path, onUnmountedCb) {
-  if(!onUnmounted && typeof window != 'undefined') {
+  if(!onUnmountedCb && typeof window != 'undefined') {
     if(getCurrentInstance()) {
       onUnmountedCb = onUnmounted
     } else {
@@ -342,12 +342,12 @@ async function live(api, path, onUnmountedCb) {
               const prop = boundProps[propName]
               const propBounds = prop.bounds
               for(const propBound of propBounds) {
-                console.log("PROP BOUND DISPOSE", propBound)
+                //console.log("PROP BOUND DISPOSE", propBound)
                 propBound.dispose()
               }
               const propSources = prop.sources
               for(const propSource of propSources) {
-                console.log("PROP SOURCE DISPOSE", propSource)
+                //console.log("PROP SOURCE DISPOSE", propSource)
                 propSource.observable.unobserve(propSource.observer)
               }
             }
